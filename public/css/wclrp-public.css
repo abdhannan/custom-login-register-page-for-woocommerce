@@ -1,0 +1,5 @@
+/* Optional: align forms to center */
+.woocommerce form.woocommerce-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
