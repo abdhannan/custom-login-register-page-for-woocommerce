@@ -17,11 +17,11 @@ class WCLRP_Shortcodes {
      */
     public function render_login_form() {
         if ( is_user_logged_in() ) {
-            return __( 'You are already logged in.', WCLRP::TEXT_DOMAIN );
+            return __( 'You are already logged in.', 'custom-login-register-page-for-woocommerce' );
         }
 
         if ( ! get_option( 'woocommerce_enable_myaccount_registration' ) ) {
-            return __( 'Registration is disabled.', WCLRP::TEXT_DOMAIN );
+            return __( 'Registration is disabled.', 'custom-login-register-page-for-woocommerce' );
         }
 
         
@@ -37,12 +37,12 @@ class WCLRP_Shortcodes {
      */
     public function render_register_form() {
         if ( is_user_logged_in() ) {
-            return __( 'You are already registered and logged in.', WCLRP::TEXT_DOMAIN );
+            return __( 'You are already registered and logged in.', 'custom-login-register-page-for-woocommerce' );
         }
 
 
         if ( get_option( 'wclrp_register_page' ) && get_the_ID() !== (int) get_option( 'wclrp_register_page' ) ) {
-            return __( 'This page is not correctly configured. Please check your settings.', WCLRP::TEXT_DOMAIN );
+            return __( 'This page is not correctly configured. Please check your settings.', 'custom-login-register-page-for-woocommerce' );
         }
 
 
@@ -53,7 +53,7 @@ class WCLRP_Shortcodes {
         <div class="woocommerce">
             <div class="u-columns col2-set" id="customer_login">
                 <div class="u-column2 col-2">
-                    <h2><?php esc_html__( 'Register', WCLRP::TEXT_DOMAIN ); ?></h2>
+                    <h2><?php esc_html__( 'Register', 'custom-login-register-page-for-woocommerce' ); ?></h2>
                     <?php
                     /**
                      * Hook: woocommerce_register_form_start.
@@ -63,19 +63,19 @@ class WCLRP_Shortcodes {
                     woocommerce_form_field( 'username', [
                         'type'        => 'text',
                         'required'    => true,
-                        'label'       => __( 'Username', WCLRP::TEXT_DOMAIN ),
+                        'label'       => __( 'Username', 'custom-login-register-page-for-woocommerce' ),
                     ]);
 
                     woocommerce_form_field( 'email', [
                         'type'        => 'email',
                         'required'    => true,
-                        'label'       => __( 'Email address', WCLRP::TEXT_DOMAIN ),
+                        'label'       => __( 'Email address', 'custom-login-register-page-for-woocommerce' ),
                     ]);
 
                     woocommerce_form_field( 'password', [
                         'type'        => 'password',
                         'required'    => true,
-                        'label'       => __( 'Password', WCLRP::TEXT_DOMAIN ),
+                        'label'       => __( 'Password', 'custom-login-register-page-for-woocommerce' ),
                     ]);
 
                     /**
@@ -85,7 +85,7 @@ class WCLRP_Shortcodes {
 
                     wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' );
                     ?>
-                    <button type="submit" class="woocommerce-Button button" name="register" value="<?php esc_attr_e( 'Register', WCLRP::TEXT_DOMAIN ); ?>"><?php esc_html_e( 'Register', WCLRP::TEXT_DOMAIN ); ?></button>
+                    <button type="submit" class="woocommerce-Button button" name="register" value="<?php esc_attr_e( 'Register', 'custom-login-register-page-for-woocommerce' ); ?>"><?php esc_html_e( 'Register', 'custom-login-register-page-for-woocommerce' ); ?></button>
                     <?php
                     /**
                      * Hook: woocommerce_register_form_end.

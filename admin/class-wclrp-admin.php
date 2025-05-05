@@ -18,8 +18,8 @@ class WCLRP_Admin {
     public function add_admin_menu() {
         add_submenu_page(
             'woocommerce',
-            __( 'Login/Register Settings', WCLRP::TEXT_DOMAIN ),
-            __( 'Login/Register Pages', WCLRP::TEXT_DOMAIN ),
+            __( 'Login/Register Settings', 'custom-login-register-page-for-woocommerce' ),
+            __( 'Login/Register Pages', 'custom-login-register-page-for-woocommerce' ),
             'manage_options',
             'wclrp-settings',
             [ $this, 'settings_page' ]
@@ -45,14 +45,14 @@ class WCLRP_Admin {
 
         add_settings_section(
             'wclrp_main_section',
-            __( 'Page Settings', WCLRP::TEXT_DOMAIN ),
+            __( 'Page Settings', 'custom-login-register-page-for-woocommerce' ),
             null,
             'wclrp-settings'
         );
 
         add_settings_field(
             'wclrp_login_page',
-            __( 'Login Page', WCLRP::TEXT_DOMAIN ),
+            __( 'Login Page', 'custom-login-register-page-for-woocommerce' ),
             [ $this, 'dropdown_pages_login' ],
             'wclrp-settings',
             'wclrp_main_section'
@@ -60,7 +60,7 @@ class WCLRP_Admin {
 
         add_settings_field(
             'wclrp_register_page',
-            __( 'Register Page', WCLRP::TEXT_DOMAIN ),
+            __( 'Register Page', 'custom-login-register-page-for-woocommerce' ),
             [ $this, 'dropdown_pages_register' ],
             'wclrp-settings',
             'wclrp_main_section'
@@ -75,7 +75,7 @@ class WCLRP_Admin {
         wp_dropdown_pages( [
             'name'              => 'wclrp_login_page',
             'selected'          => esc_attr( $selected ),
-            'show_option_none'  => esc_html__( '— Select —', WCLRP::TEXT_DOMAIN ),
+            'show_option_none'  => esc_html__( '— Select —', 'custom-login-register-page-for-woocommerce' ),
         ] );
     }
 
@@ -85,9 +85,9 @@ class WCLRP_Admin {
     public function dropdown_pages_register() {
         $selected = get_option( WCLRP::OPTION_PREFIX . 'register_page' );
         wp_dropdown_pages( [
-            'name'              => WCLRP::OPTION_PREFIX . 'register_page',
+            'name'              => esc_attr( WCLRP::OPTION_PREFIX . 'register_page' ),
             'selected'          => esc_attr( $selected ),
-            'show_option_none'  => esc_html__( '— Select —', WCLRP::TEXT_DOMAIN ),
+            'show_option_none'  => esc_html__( '— Select —', 'custom-login-register-page-for-woocommerce' ),
         ] );
     }
 
@@ -97,7 +97,7 @@ class WCLRP_Admin {
     public function settings_page() {
         ?>
         <div class="wrap">
-            <h1><?php esc_html_e( 'Custom Login/Register Settings', WCLRP::TEXT_DOMAIN ); ?></h1>
+            <h1><?php esc_html_e( 'Custom Login/Register Settings', 'custom-login-register-page-for-woocommerce' ); ?></h1>
             <form method="post" action="options.php">
                 <?php
                 settings_fields( WCLRP::SETTINGS_GROUP );
@@ -108,32 +108,32 @@ class WCLRP_Admin {
 
             <hr>
 
-            <h2><?php echo esc_html__( 'How to Use This Plugin', WCLRP::TEXT_DOMAIN ); ?></h2>
-            <p><?php echo esc_html__( 'This plugin allows you to create separate login and register pages for WooCommerce users using shortcodes.', WCLRP::TEXT_DOMAIN ); ?></p>
+            <h2><?php echo esc_html__( 'How to Use This Plugin', 'custom-login-register-page-for-woocommerce' ); ?></h2>
+            <p><?php echo esc_html__( 'This plugin allows you to create separate login and register pages for WooCommerce users using shortcodes.', 'custom-login-register-page-for-woocommerce' ); ?></p>
 
             <ol>
-                <li><?php echo esc_html__( 'Create two new pages in WordPress: one for login and one for register.', WCLRP::TEXT_DOMAIN ); ?></li>
-                <li><?php echo esc_html__( 'On the login page, add the shortcode', WCLRP::TEXT_DOMAIN ); ?>: <code>[wclrp_login_form]</code></li>
-                <li><?php echo esc_html__( 'On the register page, add the shortcode', WCLRP::TEXT_DOMAIN ); ?>: <code>[wclrp_register_form]</code></li>
-                <li><?php echo esc_html__( 'Go back to this settings page and select your login and register pages from the dropdown.', WCLRP::TEXT_DOMAIN ); ?></li>
-                <li><?php echo esc_html__( 'Save changes. When an unauthenticated user visits the default WooCommerce account page, they will be redirected to your custom login page.', WCLRP::TEXT_DOMAIN ); ?></li>
+                <li><?php echo esc_html__( 'Create two new pages in WordPress: one for login and one for register.', 'custom-login-register-page-for-woocommerce' ); ?></li>
+                <li><?php echo esc_html__( 'On the login page, add the shortcode', 'custom-login-register-page-for-woocommerce' ); ?>: <code>[wclrp_login_form]</code></li>
+                <li><?php echo esc_html__( 'On the register page, add the shortcode', 'custom-login-register-page-for-woocommerce' ); ?>: <code>[wclrp_register_form]</code></li>
+                <li><?php echo esc_html__( 'Go back to this settings page and select your login and register pages from the dropdown.', 'custom-login-register-page-for-woocommerce' ); ?></li>
+                <li><?php echo esc_html__( 'Save changes. When an unauthenticated user visits the default WooCommerce account page, they will be redirected to your custom login page.', 'custom-login-register-page-for-woocommerce' ); ?></li>
             </ol>
 
-            <p><strong><?php echo esc_html__( 'Tip:', WCLRP::TEXT_DOMAIN ); ?></strong> <?php echo esc_html__( 'Make sure the pages you select are published and not set to private.', WCLRP::TEXT_DOMAIN ); ?></p>
+            <p><strong><?php echo esc_html__( 'Tip:', 'custom-login-register-page-for-woocommerce' ); ?></strong> <?php echo esc_html__( 'Make sure the pages you select are published and not set to private.', 'custom-login-register-page-for-woocommerce' ); ?></p>
 
 
         </div>
         <hr>
         <p style="margin-top: 40px; font-size: 13px; color: #666;">
             <?php
-            /* translators: %s: author name */
             echo sprintf(
-                esc_html__( 'Plugin developed by %s.', WCLRP::TEXT_DOMAIN ),
+                // translators: %s is the HTML link to the plugin author's website.
+                esc_html__( 'Plugin developed by %s.', 'custom-login-register-page-for-woocommerce' ),
                 '<a href="' . esc_url( 'https://abdhannan.codes' ) . '" target="_blank" rel="noopener noreferrer">Abd Hannan</a>'
             );
             ?>
             <br />
-            &copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php echo esc_html__( 'All rights reserved.', WCLRP::TEXT_DOMAIN ); ?>
+            &copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php echo esc_html__( 'All rights reserved.', 'custom-login-register-page-for-woocommerce' ); ?>
         </p>
 
         <?php
