@@ -1,5 +1,5 @@
 === Custom Login Register Page for WooCommerce ===
-Contributors: abdhannan
+Contributors: Abd Hannan
 Tags: woocommerce, login, register, shortcode, user account
 Requires at least: 5.8
 Tested up to: 6.8
@@ -15,8 +15,8 @@ Separate WooCommerce login and register forms into individual pages using shortc
 WooCommerce by default combines login and register forms in the My Account page. This plugin allows you to:
 
 * Use separate pages for login and register.
-* Add login form using `[wclrp_login_form]` shortcode.
-* Add register form using `[wclrp_register_form]` shortcode.
+* Add login form using `[custlore_login_form]` shortcode.
+* Add register form using `[custlore_register_form]` shortcode.
 * Select custom login and register pages from admin settings.
 * Keep using default WooCommerce form fields and validation.
 * Compatible with most WooCommerce-compatible themes.
@@ -26,7 +26,7 @@ WooCommerce by default combines login and register forms in the My Account page.
 1. Upload the plugin folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Go to WooCommerce > Login/Register Pages to select your custom login and register pages.
-4. Add `[wclrp_login_form]` or `[wclrp_register_form]` to the desired pages.
+4. Add `[custlore_login_form]` or `[custlore_register_form]` to the desired pages.
 
 == Frequently Asked Questions ==
 
