@@ -2,14 +2,14 @@
 /**
  * Shortcodes for login and register
  */
-class WCLRP_Shortcodes {
+class CUSTLORE_Shortcodes {
 
     /**
      * Register all shortcodes
      */
     public function register_shortcodes() {
-        add_shortcode( 'wclrp_login_form', [ $this, 'render_login_form' ] );
-        add_shortcode( 'wclrp_register_form', [ $this, 'render_register_form' ] );
+        add_shortcode( 'custlore_login_form', [ $this, 'render_login_form' ] );
+        add_shortcode( 'custlore_register_form', [ $this, 'render_register_form' ] );
     }
 
     /**
@@ -41,7 +41,7 @@ class WCLRP_Shortcodes {
         }
 
 
-        if ( get_option( 'wclrp_register_page' ) && get_the_ID() !== (int) get_option( 'wclrp_register_page' ) ) {
+        if ( get_option( 'custlore_register_page' ) && get_the_ID() !== (int) get_option( 'custlore_register_page' ) ) {
             return __( 'This page is not correctly configured. Please check your settings.', 'custom-login-register-page-for-woocommerce' );
         }
 
