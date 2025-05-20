@@ -2,7 +2,7 @@
 /**
  * Admin settings for WooCommerce Custom Login Register Page
  */
-class WCLRP_Admin {
+class CUSTLORE_Admin {
 
     /**
      * Initialize hooks
@@ -21,7 +21,7 @@ class WCLRP_Admin {
             __( 'Login/Register Settings', 'custom-login-register-page-for-woocommerce' ),
             __( 'Login/Register Pages', 'custom-login-register-page-for-woocommerce' ),
             'manage_options',
-            'wclrp-settings',
+            'custlore-settings',
             [ $this, 'settings_page' ]
         );
     }
@@ -30,13 +30,13 @@ class WCLRP_Admin {
      * Register settings and fields
      */
     public function register_settings() {
-        register_setting( WCLRP::SETTINGS_GROUP, WCLRP::OPTION_PREFIX . 'login_page', [
+        register_setting( CUSTLORE::SETTINGS_GROUP, CUSTLORE::OPTION_PREFIX . 'login_page', [
             'type'              => 'string',
             'sanitize_callback' => 'sanitize_text_field',
             'default'           => '',
         ] );
         
-        register_setting( WCLRP::SETTINGS_GROUP, WCLRP::OPTION_PREFIX . 'register_page', [
+        register_setting( CUSTLORE::SETTINGS_GROUP, CUSTLORE::OPTION_PREFIX . 'register_page', [
             'type'              => 'string',
             'sanitize_callback' => 'sanitize_text_field',
             'default'           => '',
@@ -44,26 +44,26 @@ class WCLRP_Admin {
         
 
         add_settings_section(
-            'wclrp_main_section',
+            'custlore_main_section',
             __( 'Page Settings', 'custom-login-register-page-for-woocommerce' ),
             null,
-            'wclrp-settings'
+            'custlore-settings'
         );
 
         add_settings_field(
-            'wclrp_login_page',
+            'custlore_login_page',
             __( 'Login Page', 'custom-login-register-page-for-woocommerce' ),
             [ $this, 'dropdown_pages_login' ],
-            'wclrp-settings',
-            'wclrp_main_section'
+            'custlore-settings',
+            'custlore_main_section'
         );
 
         add_settings_field(
-            'wclrp_register_page',
+            'custlore_register_page',
             __( 'Register Page', 'custom-login-register-page-for-woocommerce' ),
             [ $this, 'dropdown_pages_register' ],
-            'wclrp-settings',
-            'wclrp_main_section'
+            'custlore-settings',
+            'custlore_main_section'
         );
     }
 
@@ -71,9 +71,9 @@ class WCLRP_Admin {
      * Render login page dropdown
      */
     public function dropdown_pages_login() {
-        $selected = get_option( WCLRP::OPTION_PREFIX . 'login_page' );
+        $selected = get_option( CUSTLORE::OPTION_PREFIX . 'login_page' );
         wp_dropdown_pages( [
-            'name'              => 'wclrp_login_page',
+            'name'              => 'custlore_login_page',
             'selected'          => esc_attr( $selected ),
             'show_option_none'  => esc_html__( '— Select —', 'custom-login-register-page-for-woocommerce' ),
         ] );
@@ -83,9 +83,9 @@ class WCLRP_Admin {
      * Render register page dropdown
      */
     public function dropdown_pages_register() {
-        $selected = get_option( WCLRP::OPTION_PREFIX . 'register_page' );
+        $selected = get_option( CUSTLORE::OPTION_PREFIX . 'register_page' );
         wp_dropdown_pages( [
-            'name'              => esc_attr( WCLRP::OPTION_PREFIX . 'register_page' ),
+            'name'              => esc_attr( CUSTLORE::OPTION_PREFIX . 'register_page' ),
             'selected'          => esc_attr( $selected ),
             'show_option_none'  => esc_html__( '— Select —', 'custom-login-register-page-for-woocommerce' ),
         ] );
@@ -100,8 +100,8 @@ class WCLRP_Admin {
             <h1><?php esc_html_e( 'Custom Login/Register Settings', 'custom-login-register-page-for-woocommerce' ); ?></h1>
             <form method="post" action="options.php">
                 <?php
-                settings_fields( WCLRP::SETTINGS_GROUP );
-                do_settings_sections( 'wclrp-settings' );
+                settings_fields( CUSTLORE::SETTINGS_GROUP );
+                do_settings_sections( 'custlore-settings' );
                 submit_button();
                 ?>
             </form>
@@ -113,8 +113,8 @@ class WCLRP_Admin {
 
             <ol>
                 <li><?php echo esc_html__( 'Create two new pages in WordPress: one for login and one for register.', 'custom-login-register-page-for-woocommerce' ); ?></li>
-                <li><?php echo esc_html__( 'On the login page, add the shortcode', 'custom-login-register-page-for-woocommerce' ); ?>: <code>[wclrp_login_form]</code></li>
-                <li><?php echo esc_html__( 'On the register page, add the shortcode', 'custom-login-register-page-for-woocommerce' ); ?>: <code>[wclrp_register_form]</code></li>
+                <li><?php echo esc_html__( 'On the login page, add the shortcode', 'custom-login-register-page-for-woocommerce' ); ?>: <code>[custlore_login_form]</code></li>
+                <li><?php echo esc_html__( 'On the register page, add the shortcode', 'custom-login-register-page-for-woocommerce' ); ?>: <code>[custlore_register_form]</code></li>
                 <li><?php echo esc_html__( 'Go back to this settings page and select your login and register pages from the dropdown.', 'custom-login-register-page-for-woocommerce' ); ?></li>
                 <li><?php echo esc_html__( 'Save changes. When an unauthenticated user visits the default WooCommerce account page, they will be redirected to your custom login page.', 'custom-login-register-page-for-woocommerce' ); ?></li>
             </ol>
